@@ -19,3 +19,8 @@ id	world	walltex	floortex	skip	flip	condition	path	heuristic
 18	farclose1	brickwall.png	na	1	0	suboptimal	p(6,0);p(5,0);p(4,0);	incomplete, closer
 19	tradeoff8	brickwall.png	na	0	0	suboptimal	p(3,0);p(4,0);p(5,0);	incomplete tradeoff,closer
 20	tradeoff8	brickwall.png	na	0	0	optimal	p(3,0);p(2,0);p(1,0);	incomplete tradeoff,closer
+21  1_1 brickwall.png na  0 0 optimal p(5,0);p(6,0);p(7,0);p(7,1);p(7,2);p(7,3);p(7,3);  
+22  1_2 brickwall.png na  0 0 suboptimal p(5,0);p(4,0);p(3,0);p(2,0);p(1,0);p(0,0);p(0,1);  
+23  2_1 brickwall.png na  0 0 optimal p(4,1);p(5,1);p(5,2);p(5,3);p(6,3);p(7,3);p(7,2);p(7,1);  
+24  2_2 brickwall.png na  0 0 suboptimal  p(4,1);p(3,1);p(2,1);p(2,0);p(1,0);p(0,0);p(0,1);p(0,2);
+25  3_1 brickwall.png na  0 0 optimal 
