@@ -1,5 +1,3 @@
-
-
 class AgentGraphics {
   float offx, offy; // pixel offset in the current cell, which will be zero if the agent is located in the centre of the cell
   int da;
@@ -27,6 +25,7 @@ class AgentGraphics {
     wallimg  = loadImage("textures/"+ walltex);
     agentimg  = loadImage("textures/"+ agenttex);
     Ximg  = loadImage("textures/"+ startingcelltex);
+    goalimg = loadImage("textures/"+goalcelltex);
     
     surface.setResizable(true);
   }
@@ -160,9 +159,11 @@ class AgentGraphics {
         }
 
         if (goal(i, j) || gridworld[i][j] == S_Goalreached ) {
+          rect(0, 0, cellsize-2, cellsize-2);
           if (goal(i, j)) {
             fill(255, 0, 0); 
-            stroke(255, 0, 0);
+            stroke(255, 0, 0);          
+            image(goalimg, 2, 2, cellsize-4, cellsize-4);
           } else {
             fill(255, 0, 255); 
             stroke(255, 0, 255);
@@ -170,7 +171,7 @@ class AgentGraphics {
 
           pushMatrix();
           translate(cellsize/2, cellsize/2);
-          ellipse(0, 0, cellsize-2, cellsize-2);
+
           popMatrix();
         }
 

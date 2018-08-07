@@ -22,7 +22,7 @@ final int S_AgentStartingPosition = 5; // a visited goal
 
 
 String movieListFile = "auto_movie_generation.csv"; 
-String mapDir = "tradeoffs/";
+String mapDir = "mazes/";
 // -----------------------------------------------------------------------------------------------------------------
 //
 //       texture images 
@@ -30,8 +30,9 @@ String mapDir = "tradeoffs/";
 // -----------------------------------------------------------------------------------------------------------------
 
 String startingcelltex =  "x.png";     // image of the starting cell from which the agentstarts
+String goalcelltex = "goalimg.jpeg";
 String[] agentImages = {"agentg.png", "agentc.png", "agentd.png", "agente.png", "agentf.png", "agenth.png"};
-PImage floorimg, wallimg, Ximg, agentimg; 
+PImage floorimg, wallimg, Ximg, agentimg, goalimg; 
 String floortex = "";      
 String walltex =   ""; 
 String agenttex = "agent.png";
@@ -76,11 +77,12 @@ String currentWorldMap = "";
 int nextmovie = 1;
 String[] automovie = null;
 String movieName = ""; 
-boolean renerdingMovie = false;
+boolean renderingMovie = false;
 boolean firstframe = true;
 
 int agent_start_x = 0;    // where whould the initial location be
 int agent_start_y = 0;
+boolean agent_flag = false;
 
 void setup() {
   //size(980, 350); // tradeoff2
@@ -90,7 +92,7 @@ void setup() {
    // size(740, 350); // bigsmall
    // size(980, 350); // tradeoff7
   //size(900, 350); // farclose
-   size(980, 270); 
+   size(980, 400); 
   
   
   gc.setupGC();
@@ -127,12 +129,28 @@ void draw() {
           videoExport.setFrameRate(40);
         }
         videoExport.saveFrame();
+        if (agent_flag == true) {
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          videoExport.saveFrame();
+          agent_flag = false;
+          println("agent step: "+agent_flag);
+        }
       }
   }
 }
 
 void doAutomovie() {
-  if (!renerdingMovie) {
+  if (!renderingMovie) {
     
     if (nextmovie < automovie.length) {                                      // load the next movie
       String   movie = automovie[nextmovie];
@@ -180,7 +198,7 @@ void doAutomovie() {
           observationModel.reset();
           recording = true;
           firstframe = true;
-          renerdingMovie = true;
+          renderingMovie = true;
         }
       }
       nextmovie++;
@@ -194,7 +212,7 @@ void doAutomovie() {
       observationModel.reset();
       agent.resetAgent();
       agent.resetAgentPos(agent_start_x, agent_start_y);
-      renerdingMovie = false;
+      renderingMovie = false;
       println("Finished rendering... ");
     }
   }

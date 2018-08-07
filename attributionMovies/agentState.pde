@@ -86,6 +86,9 @@ class AgentState {
       stringpath += s;
       pathstep++;
     }
+    else {
+      agent_flag = true;
+    }
   }
 
   // initiate rotation
