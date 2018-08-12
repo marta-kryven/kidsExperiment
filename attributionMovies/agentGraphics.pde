@@ -39,6 +39,7 @@ class AgentGraphics {
       offx = dx*(abs(offx)+vm);
       offy = dy*(abs(offy)+vm);
 
+      moving = true;
       return false;
     } else {
       moving = false;

@@ -29,7 +29,7 @@ String mapDir = "mazes/";
 //
 // -----------------------------------------------------------------------------------------------------------------
 
-String startingcelltex =  "x.png";     // image of the starting cell from which the agentstarts
+String startingcelltex =  "door.png";     // image of the starting cell from which the agentstarts
 String goalcelltex = "goalimg.jpeg";
 String[] agentImages = {"agentg.png", "agentc.png", "agentd.png", "agente.png", "agentf.png", "agenth.png"};
 PImage floorimg, wallimg, Ximg, agentimg, goalimg; 
@@ -82,7 +82,6 @@ boolean firstframe = true;
 
 int agent_start_x = 0;    // where whould the initial location be
 int agent_start_y = 0;
-boolean agent_flag = false;
 
 void setup() {
   //size(980, 350); // tradeoff2
@@ -129,21 +128,8 @@ void draw() {
           videoExport.setFrameRate(40);
         }
         videoExport.saveFrame();
-        if (agent_flag == true) {
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          videoExport.saveFrame();
-          agent_flag = false;
-          println("agent step: "+agent_flag);
+        if (gc.moving == false) {
+          for (int i=1; i <= 5; i++) videoExport.saveFrame();
         }
       }
   }
@@ -187,7 +173,8 @@ void doAutomovie() {
           gc.setupGC();
           
           movieName = trim(line[0]);
-          videoExport = new VideoExport(this, movieName + ".mp4"); 
+          String moviename =  "moviedir/" + movieName + ".mp4";
+          videoExport = new VideoExport(this, moviename); 
           videoExport.setFrameRate(40);
           agentPathString = line[7];
 

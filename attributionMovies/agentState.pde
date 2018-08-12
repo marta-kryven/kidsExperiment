@@ -27,7 +27,7 @@ class AgentState {
     path = new String[maxpath];
     motorplan = null;
     stringpath="p("+x+","+y+");";
-    println("created agent at", x + "," + y);
+   // println("created agent at", x + "," + y);
   }
 
   String getStringPath() {
@@ -38,7 +38,7 @@ class AgentState {
     xnow = startX; 
     ynow = startY;
     stringpath="p(" + startX + "," + startY+ ");";
-    println("reset agent at", startX + "," + startY);
+  //  println("reset agent at", startX + "," + startY);
   }
 
   // use this every time the world is reinitialised
@@ -61,12 +61,12 @@ class AgentState {
     agent.motorplan = m;
     posInPath=0;
     
-    print("motorplan: ");
+  /*  print("motorplan: ");
     for (cell c: m) {
       print ( "(", c.x, ",", c.y, ")");
     }
     
-    println();
+    println();*/
   }
 
   void recordTurn(int angle, int newangle) {
@@ -85,9 +85,6 @@ class AgentState {
       String s = "p(" + x + "," + y + ");";
       stringpath += s;
       pathstep++;
-    }
-    else {
-      agent_flag = true;
     }
   }
 
@@ -114,7 +111,7 @@ class AgentState {
   // move one cell north, east, west or south; orient in that direction if needed
   void setTargetXYat(cell p) {
 
-    println("setTargetXYat", p.x, p.y);
+  //  println("setTargetXYat", p.x, p.y);
     if ( exists(xnow + p.x, ynow + p.y) ) {
 
       dx = p.x; 
@@ -138,7 +135,7 @@ class AgentState {
 
     do {
       if (!exists(x, y)) {
-        println("err: out of map at (", x, ", ", y, ") while checking (", px, ",", py, "), ", "fxfy:", fx, ",", fy);
+    //    println("err: out of map at (", x, ", ", y, ") while checking (", px, ",", py, "), ", "fxfy:", fx, ",", fy);
         return true;
       }
       if (wall(x, y)) return false;
